@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import useFetch from './useFetch';
 
 function App() {
+  const state = useFetch();
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   {state.loading && <h1>Loading...</h1>}
+   {state.data && state.data.map((d,index)=>{
+    return (
+      <h3 key={index}>{d}</h3>
+    )
+   })}
     </div>
   );
 }
